@@ -37,4 +37,10 @@ class BookingSystemApplicationTests {
 		List<Customer> foundCustomers = customerRepository.findByBookingsCourseName("java");
 		assertEquals(2, foundCustomers.size());
 	}
+
+	@Test
+	void findCourseByCustomerId() {
+		List<Course> foundCourses = courseRepository.findByBookingsCustomerId(1L);
+				assertEquals(4, foundCourses.size());
+	}
 }
