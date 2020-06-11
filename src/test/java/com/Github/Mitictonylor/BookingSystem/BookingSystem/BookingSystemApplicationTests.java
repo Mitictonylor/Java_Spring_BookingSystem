@@ -39,7 +39,7 @@ class BookingSystemApplicationTests {
 
     @Test
     void findCustomerByCourseName() {
-        List<Customer> foundCustomers = customerRepository.findByBookingsCourseName("java");
+        List<Customer> foundCustomers = customerRepository.findByBookingsCourseNameIgnoreCase("java");
         assertEquals(2, foundCustomers.size());
     }
 
@@ -57,13 +57,13 @@ class BookingSystemApplicationTests {
 
     @Test
     void findByCustomerTownAndBookingsCourseName() {
-        List<Customer> foundCustomer = customerRepository.findByTownAndBookingsCourseName("London", "javascript");
+        List<Customer> foundCustomer = customerRepository.findByTownIgnoreCaseAndBookingsCourseNameIgnoreCase("London", "javascript");
         assertEquals(2, foundCustomer.size());
     }
 
     @Test
     void findByCustomerTownAndBookingsCourseNameAndAgeGreaterThen() {
-        List<Customer> foundCustomer = customerRepository.findByTownAndBookingsCourseNameAndAgeGreaterThan("London", "javascript", 40);
+        List<Customer> foundCustomer = customerRepository.findByTownIgnoreCaseAndBookingsCourseNameIgnoreCaseAndAgeGreaterThan("London", "javascript", 40);
         assertEquals(1, foundCustomer.size());
     }
 }

@@ -1,6 +1,5 @@
 package com.Github.Mitictonylor.BookingSystem.BookingSystem.controller;
 
-import com.Github.Mitictonylor.BookingSystem.BookingSystem.models.Course;
 import com.Github.Mitictonylor.BookingSystem.BookingSystem.models.Customer;
 import com.Github.Mitictonylor.BookingSystem.BookingSystem.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +22,13 @@ public class CustomerController {
             @RequestParam(name = "ageOver", required = false) Integer age
     ) {
         if (courseName != null & town != null & age != null) {
-            return new ResponseEntity<>(customerRepository.findByTownAndBookingsCourseNameAndAgeGreaterThan(town, courseName, age), HttpStatus.OK);
+            return new ResponseEntity<>(customerRepository.findByTownIgnoreCaseAndBookingsCourseNameIgnoreCaseAndAgeGreaterThan(town, courseName, age), HttpStatus.OK);
         }
         if (courseName != null & town != null) {
-            return new ResponseEntity<>(customerRepository.findByTownAndBookingsCourseName(town, courseName), HttpStatus.OK);
+            return new ResponseEntity<>(customerRepository.findByTownIgnoreCaseAndBookingsCourseNameIgnoreCase(town, courseName), HttpStatus.OK);
         }
         if (courseName != null) {
-            return new ResponseEntity<>(customerRepository.findByBookingsCourseName(courseName), HttpStatus.OK);
+            return new ResponseEntity<>(customerRepository.findByBookingsCourseNameIgnoreCase(courseName), HttpStatus.OK);
         }
         return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
     }
