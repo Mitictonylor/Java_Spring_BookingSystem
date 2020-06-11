@@ -29,7 +29,7 @@ public class DataLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        Customer antonio = new Customer("Antonio","Bari",32);
+        Customer antonio = new Customer("Antonio","London",32);
         Customer francesco = new Customer("Francesco","London",47);
         Customer john = new Customer("John","Glasgow",40);
         Customer mark = new Customer("Mark","Edinburgh",25);
