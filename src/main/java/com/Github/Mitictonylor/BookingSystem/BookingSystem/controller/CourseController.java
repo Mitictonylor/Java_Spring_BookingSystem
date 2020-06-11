@@ -22,7 +22,7 @@ public class CourseController {
     }
 
     @PostMapping(value = "/courses")
-    public ResponseEntity<Course> postCustomer(@RequestBody Course course){
+    public ResponseEntity<Course> createCourse(@RequestBody Course course){
         courseRepository.save(course);
         return new ResponseEntity<Course>(course, HttpStatus.OK);
     }

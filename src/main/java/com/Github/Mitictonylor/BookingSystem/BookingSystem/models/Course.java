@@ -24,7 +24,7 @@ public class Course {
     private String town;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", cascade = CascadeType.REMOVE)
     private List<Booking> bookings;
 
     public Course(String name, int starRating, String town) {

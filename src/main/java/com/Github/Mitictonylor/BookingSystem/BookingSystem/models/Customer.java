@@ -25,7 +25,7 @@ public class Customer {
     private int age;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE)
     private List<Booking> bookings;
 
     public Customer(String name, String town, int age) {
