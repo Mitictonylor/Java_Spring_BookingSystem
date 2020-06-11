@@ -1,5 +1,6 @@
 package com.Github.Mitictonylor.BookingSystem.BookingSystem.controller;
 
+import com.Github.Mitictonylor.BookingSystem.BookingSystem.models.Course;
 import com.Github.Mitictonylor.BookingSystem.BookingSystem.models.Customer;
 import com.Github.Mitictonylor.BookingSystem.BookingSystem.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,16 @@ public class CustomerController {
         return new ResponseEntity<Customer>(customer, HttpStatus.OK);
     }
 
-
+    @PutMapping(value = "/customers/{id}")
+    public ResponseEntity updateCustomer(@RequestBody Customer customer){
+        customerRepository.save(customer);
+        return new ResponseEntity<>(customer, HttpStatus.OK);
+    }
+    @DeleteMapping(value = "/customers/{id}")
+    public ResponseEntity deleteCustomer(@PathVariable Long id){
+        customerRepository.deleteById(id);
+        return new ResponseEntity<>("Deleted Object with id "+ id, HttpStatus.OK);
+    }
 }
 
 
