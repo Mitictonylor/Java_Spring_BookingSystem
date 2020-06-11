@@ -1,5 +1,7 @@
 package com.Github.Mitictonylor.BookingSystem.BookingSystem.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.awt.print.Book;
 import java.util.ArrayList;
@@ -22,6 +24,8 @@ public class Customer {
     @Column
     private int age;
 
+    @JsonBackReference
+    @OneToMany(mappedBy = "customer")
     private List<Booking> bookings;
 
     public Customer(String name, String town, int age) {

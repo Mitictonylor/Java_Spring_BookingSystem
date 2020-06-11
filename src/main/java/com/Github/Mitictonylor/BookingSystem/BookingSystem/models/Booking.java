@@ -1,6 +1,9 @@
 package com.Github.Mitictonylor.BookingSystem.BookingSystem.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +17,9 @@ public class Booking {
     @Column
     private String date;
 
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
     private Customer customer;

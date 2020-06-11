@@ -1,5 +1,7 @@
 package com.Github.Mitictonylor.BookingSystem.BookingSystem.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,8 @@ public class Course {
     @Column
     private String town;
 
+    @JsonBackReference
+    @OneToMany(mappedBy = "course")
     private List<Booking> bookings;
 
     public Course(String name, int starRating, String town) {
