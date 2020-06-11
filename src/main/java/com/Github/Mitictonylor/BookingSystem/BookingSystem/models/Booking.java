@@ -18,4 +18,12 @@ public class Booking {
 
     private Customer customer;
 
+    public Booking(String date, Course course, Customer customer) {
+        this.date = date;
+        this.course = course;
+        this.customer = customer;
+    }
+
+    public Booking() {
+    }
 }
