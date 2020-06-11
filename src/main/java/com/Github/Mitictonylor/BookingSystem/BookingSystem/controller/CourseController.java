@@ -1,5 +1,6 @@
 package com.Github.Mitictonylor.BookingSystem.BookingSystem.controller;
 
+import com.Github.Mitictonylor.BookingSystem.BookingSystem.models.Booking;
 import com.Github.Mitictonylor.BookingSystem.BookingSystem.models.Course;
 import com.Github.Mitictonylor.BookingSystem.BookingSystem.models.Customer;
 import com.Github.Mitictonylor.BookingSystem.BookingSystem.repositories.CourseRepository;
@@ -39,5 +40,16 @@ public class CourseController {
             return new ResponseEntity<>(courseRepository.findByBookingsCustomerId(customerId), HttpStatus.OK);
         }
         return new ResponseEntity<>(courseRepository.findAll(), HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/courses/{id}")
+    public ResponseEntity updateCourse(@RequestBody Course course){
+        courseRepository.save(course);
+        return new ResponseEntity<>(course, HttpStatus.OK);
+    }
+    @DeleteMapping(value = "/courses/{id}")
+    public ResponseEntity deleteCourse(@PathVariable Long id){
+        courseRepository.deleteById(id);
+        return new ResponseEntity<>("Deleted Object with id "+ id, HttpStatus.OK);
     }
 }
