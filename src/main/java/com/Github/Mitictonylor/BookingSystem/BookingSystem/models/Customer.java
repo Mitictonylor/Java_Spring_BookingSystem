@@ -42,6 +42,14 @@ public class Customer {
         return id;
     }
 
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
