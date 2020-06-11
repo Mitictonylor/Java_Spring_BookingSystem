@@ -18,38 +18,39 @@ public class CourseController {
     CourseRepository courseRepository;
 
     @GetMapping(value = "/courses/{id}")
-    public ResponseEntity getCoursesById(@PathVariable Long id){
+    public ResponseEntity getCoursesById(@PathVariable Long id) {
         return new ResponseEntity<>(courseRepository.findById(id), HttpStatus.OK);
     }
 
     @PostMapping(value = "/courses")
-    public ResponseEntity<Course> createCourse(@RequestBody Course course){
+    public ResponseEntity<Course> createCourse(@RequestBody Course course) {
         courseRepository.save(course);
         return new ResponseEntity<Course>(course, HttpStatus.OK);
     }
 
     @GetMapping(value = "/courses")
     public ResponseEntity<List<Course>> getAllCourses(
-            @RequestParam(name ="starRating", required = false)Integer starRating,
-            @RequestParam(name = "customerId",required = false)Long customerId
-    ){
-        if(starRating != null){
+            @RequestParam(name = "starRating", required = false) Integer starRating,
+            @RequestParam(name = "customerId", required = false) Long customerId
+    ) {
+        if (starRating != null) {
             return new ResponseEntity<>(courseRepository.findByStarRating(starRating), HttpStatus.OK);
         }
-        if (customerId != null){
+        if (customerId != null) {
             return new ResponseEntity<>(courseRepository.findByBookingsCustomerId(customerId), HttpStatus.OK);
         }
         return new ResponseEntity<>(courseRepository.findAll(), HttpStatus.OK);
     }
 
     @PutMapping(value = "/courses/{id}")
-    public ResponseEntity updateCourse(@RequestBody Course course){
+    public ResponseEntity updateCourse(@RequestBody Course course) {
         courseRepository.save(course);
         return new ResponseEntity<>(course, HttpStatus.OK);
     }
+
     @DeleteMapping(value = "/courses/{id}")
-    public ResponseEntity deleteCourse(@PathVariable Long id){
+    public ResponseEntity deleteCourse(@PathVariable Long id) {
         courseRepository.deleteById(id);
-        return new ResponseEntity<>("Deleted Object with id "+ id, HttpStatus.OK);
+        return new ResponseEntity<>("Deleted Object with id " + id, HttpStatus.OK);
     }
 }

@@ -29,21 +29,21 @@ public class DataLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        Customer antonio = new Customer("Antonio","London",32);
-        Customer francesco = new Customer("Francesco","London",47);
-        Customer john = new Customer("John","Glasgow",40);
-        Customer mark = new Customer("Mark","Edinburgh",25);
+        Customer antonio = new Customer("Antonio", "London", 32);
+        Customer francesco = new Customer("Francesco", "London", 47);
+        Customer john = new Customer("John", "Glasgow", 40);
+        Customer mark = new Customer("Mark", "Edinburgh", 25);
 
         customerRepository.save(antonio);
         customerRepository.save(francesco);
         customerRepository.save(john);
         customerRepository.save(mark);
 
-        Course java = new Course("java", 4,"Glasgow");
-        Course python = new Course("python", 4,"Edinburgh");
-        Course php = new Course("php", 3,"London");
-        Course js = new Course("javascript", 4,"Glasgow");
-        Course angular = new Course("angular",5,"Cambridge");
+        Course java = new Course("java", 4, "Glasgow");
+        Course python = new Course("python", 4, "Edinburgh");
+        Course php = new Course("php", 3, "London");
+        Course js = new Course("javascript", 4, "Glasgow");
+        Course angular = new Course("angular", 5, "Cambridge");
 
         courseRepository.save(java);
         courseRepository.save(php);
