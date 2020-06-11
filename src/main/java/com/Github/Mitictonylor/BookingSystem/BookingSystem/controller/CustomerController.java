@@ -33,12 +33,16 @@ public class CustomerController {
         return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "customers/{id}")
+    @GetMapping(value = "/customers/{id}")
     public ResponseEntity getCustomerById(@PathVariable Long id){
         return new ResponseEntity<>(customerRepository.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value)
+    @PostMapping(value = "/customers")
+    public ResponseEntity<Customer> postCustomer(@RequestBody Customer customer){
+        customerRepository.save(customer);
+        return new ResponseEntity<Customer>(customer, HttpStatus.OK);
+    }
 
 
 }
