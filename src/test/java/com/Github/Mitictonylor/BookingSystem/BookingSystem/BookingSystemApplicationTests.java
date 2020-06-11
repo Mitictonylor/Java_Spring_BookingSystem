@@ -1,7 +1,9 @@
 package com.Github.Mitictonylor.BookingSystem.BookingSystem;
 
+import com.Github.Mitictonylor.BookingSystem.BookingSystem.models.Booking;
 import com.Github.Mitictonylor.BookingSystem.BookingSystem.models.Course;
 import com.Github.Mitictonylor.BookingSystem.BookingSystem.models.Customer;
+import com.Github.Mitictonylor.BookingSystem.BookingSystem.repositories.BookingRepository;
 import com.Github.Mitictonylor.BookingSystem.BookingSystem.repositories.CourseRepository;
 import com.Github.Mitictonylor.BookingSystem.BookingSystem.repositories.CustomerRepository;
 import org.junit.jupiter.api.Test;
@@ -21,6 +23,9 @@ class BookingSystemApplicationTests {
 
 	@Autowired
 	CustomerRepository customerRepository;
+
+	@Autowired
+	BookingRepository bookingRepository;
 
 	@Test
 	void contextLoads() {
@@ -42,5 +47,11 @@ class BookingSystemApplicationTests {
 	void findCourseByCustomerId() {
 		List<Course> foundCourses = courseRepository.findByBookingsCustomerId(1L);
 				assertEquals(4, foundCourses.size());
+	}
+
+	@Test
+	void findBookingByDate() {
+		List<Booking> foundBooking = bookingRepository.findByDate("12/05/20");
+		assertEquals(3, foundBooking.size());
 	}
 }
